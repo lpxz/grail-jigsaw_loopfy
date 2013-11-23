@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="jigsaw">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+    <path id="jigsaw.classpath">
+    	 <pathelement location="/home/lpxz/jikesrvm/jvolve/jvolve/dist/BaseAdaptiveSemiSpaceDSU_ia32-linux/jksvm.jar"/>
+        <pathelement location="bin"/>
+        <pathelement location="classes/jakarta-oro-2.0.8.jar"/>
+        <pathelement location="classes/sax.jar"/>
+        <pathelement location="classes/servlet.jar"/>
+        <pathelement location="classes/Tidy.jar"/>
+        <pathelement location="classes/xerces.jar"/>
+        <pathelement location="classes/xp.jar"/>
+        <pathelement location="classes/tools.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+                <exclude name="org/w3c/jigsaw/http/AsyncConcurrency.aj"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="test">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <exclude name="org/w3c/jigsaw/http/AsyncConcurrency.aj"/>
+            <classpath refid="jigsaw.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="test"/>
+            <classpath refid="jigsaw.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+	 <property name="jigsaw" location="/home/lpxz/eclipse/workspace/calfuzzer2/java_bench/jigsaw"/>
+	 <property name="rvm.exe" location="/home/lpxz/jikesrvm/dist/BaseAdaptiveMarkSweep_ia32-linux/rvm"/>
+    <target name="JigsawDriver">
+    	<sequential>       
+    	              <exec executable="${rvm.exe}"
+    	                         failonerror="false"
+    	                         dir="${basedir}"
+    	               >               
+    	                    <arg value="-classpath"/>
+    	                    <arg value="${jigsaw}/bin:${jigsaw}/classes/jakarta-oro-2.0.8.jar:${jigsaw}/classes/sax.jar:${jigsaw}/classes/servlet.jar:${jigsaw}/classes/Tidy.jar:${jigsaw}/classes/xerces.jar:${jigsaw}/classes/xp.jar:${jigsaw}/classes/tools.jar"/>
+    	                    <arg line="driver.JigsawDriver 100"/>
+    	              </exec>            
+    	              <echo message="@{class}"/>
+    	             </sequential>
+
+    
+
+ 
+    </target>
+</project>

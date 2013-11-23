@@ -1,0 +1,91 @@
+<!--
+ ~  This file is part of the Jikes RVM project (http://jikesrvm.org).
+ ~
+ ~  This file is licensed to You under the Common Public License (CPL);
+ ~  You may not use this file except in compliance with the License. You
+ ~  may obtain a copy of the License at
+ ~
+ ~      http://www.opensource.org/licenses/cpl1.0.php
+ ~
+ ~  See the COPYRIGHT.txt file distributed with this work for information
+ ~  regarding copyright ownership.
+ -->
+<project name="basic" default="test" basedir=".">
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+	        <classpath>
+	            <pathelement location="/home/lpxz/eclipse/workspace/Dcon/lib/ant-contrib.jar"/>
+	        </classpath>
+	    </taskdef>
+
+<property name="jikesrvm.dir" value="/home/lpxz/jikesrvm/jvolve/jvolve"/>
+<import file="${jikesrvm.dir}/build/base.xml"/>
+ <import file="${jikesrvm.dir}/build/tasks.xml"/>
+<property name="dist.rvm" value="/home/lpxz/jikesrvm/jvolve/jvolve/dist/BaseAdaptiveSemiSpaceDSU_ia32-linux"/>
+  <property name="rvm.exe" location="${dist.rvm}/rvm"/>
+    <property name="upt.exe" location="${jikesrvm.dir}/../upt/bin/upt.sh"/> <property name="global.jastadd.jar" value="${jikesrvm.dir}/../JastAddJ/Java1.5Backend/JavaCompiler.jar"/>
+
+
+
+
+ <target name="test"  >           
+    <sequential>
+     <echo message="Going to produce r0.jar and r1.jar" />
+     <!-- r0.jar r1.jar -->
+      <jar destfile="${basedir}/r0.jar" basedir="${basedir}/bin" excludes="r0.jar"/>       
+      <jar destfile="${basedir}/r1.jar" basedir="${basedir}_nuwa/bin"  excludes="r1.jar" />
+
+       <echo message="Going to produce dsu-specification and transformer.jar" /> 
+        <!-- dsu, transformer -->
+      <exec executable="${upt.exe}"
+                 failonerror="false"
+                 dir="${basedir}"
+                 output="${basedir}/trace"
+       >
+       <arg line="-X:vm:errorsFatal=true -X:processors=all -Xms100M -Xmx2000M -a r0.jar -b r1.jar -c r1.jar:transformers.jar -p r0_"/>
+      </exec>
+     <java classname="UPTHelper" failonerror="true" fork="yes">				     	 
+		 	              <arg line="${basedir}/trace ${basedir}/dsu-specification.txt ${basedir}/transformers/r0_Changed.java ${basedir}/transformers/JvolveTransformers.java"/>				     		 		
+    	 	<classpath >  
+    	 	 <pathelement location="/home/lpxz/eclipse/workspace/Dcon/bin"/>
+    	 	 </classpath >       
+	</java>
+    <!-- transformers.jar -->         
+      <java jar="${global.jastadd.jar}" fork="true">      
+        <arg value="-classpath" />
+        <arg path="${dist.rvm}/jksvm.jar:${basedir}/r1.jar" />
+        <arg value="-sourcepath" />
+        <arg path="${basedir}/transformers" />
+        <arg value="-d" />
+        <arg path="${basedir}/transformers" />
+        <arg path="${basedir}/transformers/JvolveTransformers.java" />
+      </java>
+      <!-- r0_Changed.java
+           We do not want r0_Foo.class files in the jar file. These classes
+           are stubs used only to compile the transformation functions.
+           r0_Foo is a new name for Foo class which is present in the old
+           version. So, there is no way r0_Foo.class will be loaded.
+           Removing it from the jar file is a sanity check to see if this
+           is indeed true.
+      -->
+      <jar destfile="${basedir}/transformers.jar" basedir="${basedir}/transformers"
+           excludes="r0*.class, r0*.java, transformers.jar" />
+      </sequential>
+
+<!--rvm-->
+      <sequential>       
+      <exec executable="${rvm.exe}"
+                 failonerror="false"
+                 dir="${basedir}">
+            <arg line="-X:vm:errorsFatal=true -X:processors=all -Xms100M -Xmx2000M -X:aos:enable_recompilation=false -X:aos:initial_compiler=base  "/>
+             <arg line=" -X:vm:dsuSpecificationFile=dsu-specification.txt -X:vm:enableDsuDeveloperInterface=true -X:vm:enableDsuOsr=true  "/>     <!--dsu option-->       
+            <arg line ="-classpath r0.jar:classes/jakarta-oro-2.0.8.jar:classes/sax.jar:classes/servlet.jar:classes/Tidy.jar:classes/xerces.jar:classes/xp.jar:classes/tools.jar"/>
+            <arg line="driver.JigsawDriver 100"/>
+      </exec>            
+     
+     </sequential>
+  </target>
+
+
+
+
+</project>

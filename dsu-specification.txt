@@ -1,0 +1,61 @@
+Nop Comparison of files /home/lpxz/eclipse/workspace/jigsaw/r0.jar /home/lpxz/eclipse/workspace/jigsaw/r1.jar
+Nop Comparison of files /home/lpxz/eclipse/workspace/jigsaw/r0.jar /home/lpxz/eclipse/workspace/jigsaw/r1.jar
+classpath r1.jar
+classpath transformers.jar
+transformers LJvolveTransformers;
+gBc Lorg/w3c/jigedit/cvs2/CvsEntryResource;
+gBm Lorg/w3c/jigedit/cvs2/CvsEntryResource; parseLog (Ljava/lang/String;)Lorg/w3c/jigsaw/html/HtmlGenerator;
+gBc Lorg/w3c/jigsaw/filters/LogFilter;
+gBm Lorg/w3c/jigsaw/filters/LogFilter; log (Lorg/w3c/jigsaw/http/Request;Lorg/w3c/jigsaw/http/Reply;)V
+gCm Lorg/w3c/jigsaw/status/StatisticsFrame; get (Lorg/w3c/jigsaw/http/Request;)Lorg/w3c/jigsaw/http/Reply;
+gBc Lorg/w3c/tools/offline/browse/StoreFinder;
+gBm Lorg/w3c/tools/offline/browse/StoreFinder; tryAction (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZI)V
+gBc Lorg/w3c/jigsaw/frames/RedirecterFrame;
+gBm Lorg/w3c/jigsaw/frames/RedirecterFrame; perform (Lorg/w3c/tools/resources/RequestInterface;)Lorg/w3c/tools/resources/ReplyInterface;
+gBc Lorg/w3c/jigsaw/admin/PlainRemoteResource;
+gBm Lorg/w3c/jigsaw/admin/PlainRemoteResource; setValues ([Ljava/lang/String;[Ljava/lang/Object;)V
+gBc Lorg/w3c/jigadmin/gui/ServerBrowser;
+gBm Lorg/w3c/jigadmin/gui/ServerBrowser; build ()V
+gBm Lorg/w3c/jigadmin/gui/ServerBrowser; main ([Ljava/lang/String;)V
+gBc Lorg/w3c/jigsaw/zip/ZipFrame;
+gBm Lorg/w3c/jigsaw/zip/ZipFrame; computeContainerListing (Z)Z
+gBc Lorg/w3c/jigsaw/indexer/ContentTypeIndexer;
+gBm Lorg/w3c/jigsaw/indexer/ContentTypeIndexer; createFileResource (Ljava/io/File;Lorg/w3c/tools/resources/RequestInterface;Ljava/lang/String;Ljava/util/Hashtable;)Lorg/w3c/tools/resources/Resource;
+gBc Lorg/w3c/tools/resources/DirectoryResource;
+gBm Lorg/w3c/tools/resources/DirectoryResource; createResource (Ljava/lang/String;Lorg/w3c/tools/resources/RequestInterface;)Lorg/w3c/tools/resources/ResourceReference;
+gBc Lorg/w3c/jigsaw/servlet/ServletMapperFrame;
+gBm Lorg/w3c/jigsaw/servlet/ServletMapperFrame; lookupResource (Lorg/w3c/tools/resources/LookupState;Lorg/w3c/tools/resources/LookupResult;)Z
+gBc Lorg/w3c/jigadm/editors/FramesHelper;
+gBm Lorg/w3c/jigadm/editors/FramesHelper; getTitle ()Ljava/lang/String;
+gCm Lorg/w3c/www/http/HttpSetCookieList; updateByteValue ()V
+gBc Lorg/w3c/jigadmin/attributes/StringArrayEditor$EditStringArrayPopup;
+gBm Lorg/w3c/jigadmin/attributes/StringArrayEditor$EditStringArrayPopup; <init> (Lorg/w3c/jigadmin/attributes/StringArrayEditor;Lorg/w3c/jigadmin/attributes/StringArrayEditor$StringArrayComponent;Lorg/w3c/jigadm/editors/EditorFeeder;[Ljava/lang/String;Ljava/lang/String;)V
+gBc Lorg/w3c/jigadmin/editors/FrameBrowser;
+gBm Lorg/w3c/jigadmin/editors/FrameBrowser; getPopupMenu (Lorg/w3c/jigadmin/RemoteResourceWrapper;)Ljavax/swing/JPopupMenu;
+gBc Lorg/w3c/jigsaw/servlet/JigsawHttpServletResponse;
+gBm Lorg/w3c/jigsaw/servlet/JigsawHttpServletResponse; sendError (ILjava/lang/String;)V
+gBm Lorg/w3c/jigsaw/servlet/JigsawHttpServletResponse; sendRedirect (Ljava/lang/String;)V
+gBc Lorg/w3c/jigsaw/resources/CheckpointResource;
+gBm Lorg/w3c/jigsaw/resources/CheckpointResource; initialize ([Ljava/lang/Object;)V
+gBc Lorg/w3c/jigadm/editors/DispatcherRulesEditor$RulesEditorFrame;
+gBm Lorg/w3c/jigadm/editors/DispatcherRulesEditor$RulesEditorFrame; remove ()V
+gBm Lorg/w3c/jigadm/editors/DispatcherRulesEditor$RulesEditorFrame; replace ()V
+gBc Lorg/w3c/jigsaw/daemon/ServerHandlerManager;
+gBm Lorg/w3c/jigsaw/daemon/ServerHandlerManager; launchServerHandler (Ljava/lang/String;Lorg/w3c/jigsaw/daemon/DaemonProperties;)V
+gBc Ldriver/JigsawHarnessPretex;
+gBm Ldriver/JigsawHarnessPretex; runLoader ([Ljava/lang/String;)V
+gBc Lorg/w3c/cvs2/CvsDirectory;
+gBm Lorg/w3c/cvs2/CvsDirectory; statusToString (I)Ljava/lang/String;
+gBc Lorg/w3c/jigsaw/resources/PasswordEditorFrame;
+gBm Lorg/w3c/jigsaw/resources/PasswordEditorFrame; handle (Lorg/w3c/jigsaw/http/Request;Lorg/w3c/jigsaw/forms/URLDecoder;)Lorg/w3c/jigsaw/http/Reply;
+gBc Lorg/w3c/jigsaw/ssi/commands/DefaultCommandRegistry;
+gBm Lorg/w3c/jigsaw/ssi/commands/DefaultCommandRegistry; initVariables (Lorg/w3c/jigsaw/ssi/SSIFrame;Lorg/w3c/jigsaw/http/Request;Ljava/util/Dictionary;)Ljava/util/Dictionary;
+gBc Lorg/w3c/jigsaw/frames/HTTPExtFrame;
+gBm Lorg/w3c/jigsaw/frames/HTTPExtFrame; checkMandatoryExtension (Lorg/w3c/jigsaw/http/Request;Ljava/lang/String;)V
+gBc Lorg/w3c/jigsaw/admin/AdminServer;
+gBm Lorg/w3c/jigsaw/admin/AdminServer; initializeAuth ()V
+gBm Lorg/w3c/jigsaw/admin/AdminServer; initialize (Lorg/w3c/jigsaw/daemon/ServerHandlerManager;Ljava/lang/String;Lorg/w3c/util/ObservableProperties;)V
+gBc Lorg/w3c/jigsaw/servlet/ServletWrapperFrame;
+gBm Lorg/w3c/jigsaw/servlet/ServletWrapperFrame; lookupOther (Lorg/w3c/tools/resources/LookupState;Lorg/w3c/tools/resources/LookupResult;)Z
+gBc Lorg/w3c/jigedit/filters/PutListFrame;
+gBm Lorg/w3c/jigedit/filters/PutListFrame; get (Lorg/w3c/jigsaw/http/Request;)Lorg/w3c/jigsaw/http/Reply;
